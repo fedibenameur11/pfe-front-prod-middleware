@@ -1,0 +1,35 @@
+.page-header {
+    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(255, 255, 255, 0.4)) !important; 
+}
+
+.input-group, .form-group , .form-control{
+    margin-bottom: 10px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 50%; /* Largeur de 50%, ajuste selon tes besoins */
+    margin: 0 auto; /* Centre horizontalement */
+    text-align: center;
+    justify-content: center; /* Centre les éléments à l'intérieur */
+}
+.input-group .form-control , .btn-block {
+    color: white; /* Texte en blanc */
+    font-size: 13px; /* Augmenter la taille de la police */
+    font-weight: bold; /* Rendre le texte plus visible */
+}
+
+.input-group .form-control::placeholder , .btn-block{
+    color: rgba(255, 255, 255, 0.7); /* Couleur du placeholder en blanc légèrement transparent */
+    font-size: 12px; /* Ajuster la taille du placeholder */
+}
+.input-group-text i {
+    font-size: 16px; /* Agrandir l'icône */
+    color: black; /* Mettre l'icône en noir */
+}
+.input-group-prepend {
+    margin-right: 1px; /* Déplace l'icône vers la gauche */
+}
