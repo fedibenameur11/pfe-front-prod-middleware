@@ -26,11 +26,12 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
-                            <select class="form-control">
-                                <option >PostgreSQL</option>
-                                <option>Oracle</option>
-                                <option>MongoDB</option>
-                                <option>Cassandra</option>
+                            <select class="form-control" [(ngModel)]="selectedDatabase">
+                                <option value="" disabled selected>Choose your database type</option>
+                                <option value="DatabaseType.PostgreSQL">PostgreSQL</option>
+                                <option value="DatabaseType.Oracle">Oracle</option>
+                                <option value="DatabaseType.MongoDB">MongoDB</option>
+                                <option value="DatabaseType.Cassandra">Cassandra</option>
                             </select>
                         </div>    
                         <div class="label-container">
@@ -40,38 +41,42 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
-                            <select class="form-control">
-                                <option>Docker Compose</option>
-                                <option>Kubernetes</option>
-                                <option>AWS</option>
-                                <option>Azure</option>
-                                <option>On-Premises</option>
+                            <select class="form-control" [(ngModel)]="selectedDeployment">
+                                <option value="" disabled selected>Choose your deployment mode</option>
+                                <option value="DeploymentType.Docker_Compose">Docker Compose</option>
+                                <option value="DeploymentType.Kubernetes">Kubernetes</option>
+                                <option value="DeploymentType.AWS">AWS</option>
+                                <option value="DeploymentType.Azure">Azure</option>
+                                <option value="DeploymentType.On-Premises">On-Premises</option>
                             </select>
                         </div>
                         <div class="label-container">
-                            <label for="example" class="custom-label">Authentication : </label>
+                            <label for="example" class="custom-label">Authentication method: </label>
                         </div>
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
-                            <select class="form-control">
-                                <option>Keycloak</option>
-                                <option>LDAP</option>
-                                <option>OAuth2</option>
+                            <select class="form-control" [(ngModel)]="selectedAuthentication">
+                                <option value="" disabled selected>Choose your authentication method</option>
+                                <option value="AuthenticationType.Keycloak">Keycloak</option>
+                                <option value="AuthenticationType.LDAP">LDAP</option>
+                                <option value="AuthenticationType.OAuth2">OAuth2</option>
                             </select>
                         </div>
-                        <div class="label-container">
+                        <div class="label-container" >
                             <label for="example" class="custom-label">Messaging middlemware : </label>
                         </div>
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
-                            <select class="form-control">
-                                <option>RabbitMQ</option>
-                                <option>ActiveMQ</option>
-                                <option>IBMMQ</option>
-                                <option>Kafka</option>
-                                <option>NATS</option>
+                                <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
+                            </div>
+                            <select class="form-control" [(ngModel)]="selectedMiddleware">
+                                <option value="" disabled selected>Choose your messaging middleware</option>
+                                <option value="MiddlewareType.RabbitMQ">RabbitMQ</option>
+                                <option value="MiddlewareType.ActiveMQ">ActiveMQ</option>
+                                <option value="MiddlewareType.IBMMQ">IBMMQ</option>
+                                <option value="MiddlewareType.Kafka">Kafka</option>
+                                <option value="MiddlewareType.NATS">NATS</option>
                             </select>
                         </div>
                         <div class="label-container">
@@ -80,14 +85,15 @@
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
-                            <select class="form-control">
-                                <option>Promotheus & Grafana</option>
-                                <option>ELK</option>
+                            <select class="form-control" [(ngModel)]="selectedMonitoring">
+                                <option value="" disabled selected>Choose your monitoring tool</option>
+                                <option value="MonitoringType.Prometheus_et_Grafana">Promotheus & Grafana</option>
+                                <option value="MonitoringType.ELK">ELK</option>
                             </select>
                         </div>
                     </div>
                     <div class="footer text-center">
-                        <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Confirm</a>
+                        <a class="btn btn-primary btn-round btn-lg btn-block" (click)="confirmchoice()">Confirm</a>
                     </div>
                     <!--<div class="pull-left">
                         <h6>

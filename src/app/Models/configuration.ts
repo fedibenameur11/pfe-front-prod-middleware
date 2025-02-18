@@ -15,7 +15,7 @@ export enum DatabaseType {
     Cassandra
 }
 
-export enum DeployementType {
+export enum DeploymentType {
     Docker_Compose,
     Kubernetes,
     AWS,
@@ -32,8 +32,7 @@ export enum MiddlewareType {
 }
 
 export enum MonitoringType {
-    Prometheus,
-    Grafana,
+    Prometheus_et_Grafana,
     ELK
 
 }
@@ -43,9 +42,9 @@ export class Configuration {
     name!: string;
     databaseType!: DatabaseType;
     middleware!: MiddlewareType;
-    deployment!: DeployementType;
+    deployment!: DeploymentType;
     authentication!: AuthenticationType;
     monitoring!: MonitoringType;
-    user!: User;
-    project!: Project;
+    user?: User;
+    project?: Project;
 }

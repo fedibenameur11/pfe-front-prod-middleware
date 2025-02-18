@@ -11,7 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 30%; /* Largeur de 50%, ajuste selon tes besoins */
+    width: 40%; /* Largeur de 50%, ajuste selon tes besoins */
     margin: 0 auto; /* Centre horizontalement */
     text-align: center;
     justify-content: center; /* Centre les éléments à l'intérieur */
