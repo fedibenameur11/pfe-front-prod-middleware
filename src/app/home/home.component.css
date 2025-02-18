@@ -1,0 +1,77 @@
+.page-header {
+    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(255, 255, 255, 0.4)) !important; 
+}
+
+.input-group, .form-group , .form-control{
+    margin-bottom: 13px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 30%; /* Largeur de 50%, ajuste selon tes besoins */
+    margin: 0 auto; /* Centre horizontalement */
+    text-align: center;
+    justify-content: center; /* Centre les éléments à l'intérieur */
+}
+.input-group .form-control , .btn-block {
+    color: white; /* Texte en blanc */
+    font-size: 13px; /* Augmenter la taille de la police */
+    font-weight: bold; /* Rendre le texte plus visible */
+    
+}
+
+.input-group .form-control::placeholder , .btn-block{
+    color: rgba(255, 255, 255, 0.7); /* Couleur du placeholder en blanc légèrement transparent */
+    font-size: 12px; /* Ajuster la taille du placeholder */
+}
+.input-group-text  {
+    font-size: 16px; /* Agrandir l'icône */
+    color: black; /* Mettre l'icône en noir */
+}
+.input-group-prepend {
+    margin-right: 1px; /* Déplace l'icône vers la gauche */
+}
+
+/* Appliquer un fond transparent à la liste déroulante */
+select {
+    background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+    color: black; /* Texte noir */
+
+    cursor: pointer;
+    appearance: none; /* Enlever le style par défaut du navigateur */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Corriger l'affichage des options */
+select:focus {
+    background: rgba(255, 255, 255, 1); /* Fond blanc seulement quand le select est actif */
+    outline: none; /* Supprime la bordure bleue par défaut */
+}
+
+/* Empêcher la liste de cacher les autres éléments */
+select option {
+    background: white; /* S'assurer que les options restent visibles */
+    color: black;
+    padding: 5px;
+}
+
+/* Améliorer l'affichage des options en overlay */
+.input-group {
+    position: relative; /* Garder une bonne structure */
+    z-index: 10; /* S'assurer que la liste déroulante s'affiche au-dessus */
+}
+
+/* Empêcher la liste déroulante de cacher les éléments en dessous */
+select {
+    position: relative;
+    z-index: 5;
+}
+
+/* Augmenter le z-index de la liste d'options pour s'afficher correctement */
+select:focus {
+    z-index: 20;
+}

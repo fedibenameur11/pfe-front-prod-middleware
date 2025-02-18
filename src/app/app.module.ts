@@ -12,6 +12,7 @@ import { KeycloakAngularModule } from 'keycloak-angular';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { HttpTokenInterceptor } from './Services/interceptor/http-token.interceptor';
 import { KeycloakService } from './Services/keycloak/keycloak.service';
+import { HomeComponent } from './home/home.component';
 
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init();
@@ -21,7 +22,8 @@ export function kcFactory(kcService: KeycloakService) {
     AppComponent,
     LoginInterfaceComponent,
     SignupComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    HomeComponent
     
   ],
   imports: [
