@@ -1,7 +1,15 @@
-<button (click)="logout()">logout</button>
 <div class="page-header" >
     <div class="page-header-image" style="background-image: url('/assets/img/bg117.jpg'); filter: blur(0.2rem);" ></div>
     <div class="container">
+        <div style="padding-top: 18px; ">
+            <button class="button-82-pushable " (click)="logout()" style="float: left; right: 110px" role="button">
+            <span class="button-82-shadow"></span>
+            <span class="button-82-edge"></span>
+            <span class="button-82-front text">
+              Logout
+            </span>
+          </button>
+        </div>
         <div class="col-md-4 content-center">
             <div class="card card-login card-plain">
                 <form class="form" method="" action="">
@@ -11,6 +19,9 @@
                         </div> 
                     </div>
                     <div class="content">
+                        <div class="label-container">
+                            <label for="example" class="custom-label">Database type : </label>
+                        </div>
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
@@ -21,7 +32,10 @@
                                 <option>MongoDB</option>
                                 <option>Cassandra</option>
                             </select>
-                        </div>               
+                        </div>    
+                        <div class="label-container">
+                            <label for="example" class="custom-label">Deployment mode : </label>
+                        </div>           
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
@@ -34,6 +48,9 @@
                                 <option>On-Premises</option>
                             </select>
                         </div>
+                        <div class="label-container">
+                            <label for="example" class="custom-label">Authentication : </label>
+                        </div>
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
@@ -42,6 +59,9 @@
                                 <option>LDAP</option>
                                 <option>OAuth2</option>
                             </select>
+                        </div>
+                        <div class="label-container">
+                            <label for="example" class="custom-label">Messaging middlemware : </label>
                         </div>
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
@@ -54,6 +74,9 @@
                                 <option>NATS</option>
                             </select>
                         </div>
+                        <div class="label-container">
+                            <label for="example" class="custom-label">Monitoring : </label>
+                        </div>
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
@@ -64,7 +87,7 @@
                         </div>
                     </div>
                     <div class="footer text-center">
-                        <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Confirmer</a>
+                        <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Confirm</a>
                     </div>
                     <!--<div class="pull-left">
                         <h6>
