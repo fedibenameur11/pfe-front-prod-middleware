@@ -26,12 +26,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
-                            <select class="form-control" [(ngModel)]="selectedDatabase">
+                            <select class="form-control" [(ngModel)]="selectedDatabase" name="database">
                                 <option value="" disabled selected>Choose your database type</option>
-                                <option value="DatabaseType.PostgreSQL">PostgreSQL</option>
-                                <option value="DatabaseType.Oracle">Oracle</option>
-                                <option value="DatabaseType.MongoDB">MongoDB</option>
-                                <option value="DatabaseType.Cassandra">Cassandra</option>
+                                <option *ngFor="let db of databaseTypes" [value]="db">{{ db }}</option>
                             </select>
                         </div>    
                         <div class="label-container">
@@ -41,13 +38,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
-                            <select class="form-control" [(ngModel)]="selectedDeployment">
+                            <select class="form-control" [(ngModel)]="selectedDeployment" name="deployment">
                                 <option value="" disabled selected>Choose your deployment mode</option>
-                                <option value="DeploymentType.Docker_Compose">Docker Compose</option>
-                                <option value="DeploymentType.Kubernetes">Kubernetes</option>
-                                <option value="DeploymentType.AWS">AWS</option>
-                                <option value="DeploymentType.Azure">Azure</option>
-                                <option value="DeploymentType.On-Premises">On-Premises</option>
+                                <option *ngFor="let dp of deploymentTypes" [value]="dp">{{ dp }}</option>
                             </select>
                         </div>
                         <div class="label-container">
@@ -56,11 +49,9 @@
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
-                            <select class="form-control" [(ngModel)]="selectedAuthentication">
+                            <select class="form-control" [(ngModel)]="selectedAuthentication" name="authentication">
                                 <option value="" disabled selected>Choose your authentication method</option>
-                                <option value="AuthenticationType.Keycloak">Keycloak</option>
-                                <option value="AuthenticationType.LDAP">LDAP</option>
-                                <option value="AuthenticationType.OAuth2">OAuth2</option>
+                                <option *ngFor="let auth of authenticationTypes" [value]="auth">{{ auth }}</option>
                             </select>
                         </div>
                         <div class="label-container" >
@@ -70,13 +61,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
-                            <select class="form-control" [(ngModel)]="selectedMiddleware">
+                            <select class="form-control" [(ngModel)]="selectedMiddleware" name="middleware">
                                 <option value="" disabled selected>Choose your messaging middleware</option>
-                                <option value="MiddlewareType.RabbitMQ">RabbitMQ</option>
-                                <option value="MiddlewareType.ActiveMQ">ActiveMQ</option>
-                                <option value="MiddlewareType.IBMMQ">IBMMQ</option>
-                                <option value="MiddlewareType.Kafka">Kafka</option>
-                                <option value="MiddlewareType.NATS">NATS</option>
+                                <option *ngFor="let mid of middlewareTypes" [value]="mid">{{mid}}</option>
                             </select>
                         </div>
                         <div class="label-container">
@@ -85,10 +72,9 @@
                         <div class="input-group form-group-no-border input-lg">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
-                            <select class="form-control" [(ngModel)]="selectedMonitoring">
+                            <select class="form-control" [(ngModel)]="selectedMonitoring" name="monitoring">
                                 <option value="" disabled selected>Choose your monitoring tool</option>
-                                <option value="MonitoringType.Prometheus_et_Grafana">Promotheus & Grafana</option>
-                                <option value="MonitoringType.ELK">ELK</option>
+                                <option *ngFor="let mon of monitoringTypes" [value]="mon">{{ mon }}</option>
                             </select>
                         </div>
                     </div>

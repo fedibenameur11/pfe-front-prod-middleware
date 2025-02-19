@@ -8,30 +8,65 @@ import { AuthenticationType, Configuration, DatabaseType, DeploymentType, Middle
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
+  focus: any;
+  focus1: any;
+  config!: Configuration;
 
-    focus: any;
-    focus1: any;
-    config!: Configuration
-    selectedDatabase!: DatabaseType;
-    selectedMiddleware!: MiddlewareType;
-    selectedDeployment!: DeploymentType;
-    selectedAuthentication!: AuthenticationType;
-    selectedMonitoring!: MonitoringType;
+  selectedDatabase: DatabaseType | undefined; // Use undefined for initial state
+  selectedMiddleware: MiddlewareType | undefined;
+  selectedDeployment: DeploymentType | undefined;
+  selectedAuthentication: AuthenticationType | undefined;
+  selectedMonitoring: MonitoringType | undefined;
 
-    constructor(private keycloakService : KeycloakService,private configurationService: ConfigurationService)
-    {}
+  databaseTypes = Object.keys(DatabaseType).filter(key => isNaN(Number(key)));
+  deploymentTypes = Object.keys(DeploymentType).filter(key => isNaN(Number(key)));
+  monitoringTypes = Object.keys(MonitoringType).filter(key => isNaN(Number(key)));
+  middlewareTypes = Object.keys(MiddlewareType).filter(key => isNaN(Number(key)));
+  authenticationTypes = Object.keys(AuthenticationType).filter(key => isNaN(Number(key)));
+
+
+
+  databaseEnum = DatabaseType;
+  middlewareEnum = MiddlewareType;
+  deploymentEnum = DeploymentType;
+  authenticationEnum = AuthenticationType;
+  monitoringEnum = MonitoringType;
+
+  constructor(private keycloakService: KeycloakService, private configurationService: ConfigurationService) { }
+
   async ngOnInit(): Promise<void> {
+    console.log("Database Types:", this.databaseTypes);
+    console.log("Deployment Types:", this.deploymentTypes);
+    console.log("Authentication Types:", this.authenticationTypes);
+    console.log("Middleware Types:", this.middlewareTypes);
+    console.log("Monitoring Types:", this.monitoringTypes);
   }
-  
-  
-  async logout(){
-      this.keycloakService.logout();
+
+  async logout() {
+    this.keycloakService.logout();
   }
+
   confirmchoice() {
+    console.log("Selected values before check:", {
+      database: this.selectedDatabase,
+      middleware: this.selectedMiddleware,
+      deployment: this.selectedDeployment,
+      authentication: this.selectedAuthentication,
+      monitoring: this.selectedMonitoring
+    });
+  
+    if (!this.selectedDatabase || !this.selectedDeployment || 
+        !this.selectedAuthentication || !this.selectedMiddleware || 
+        !this.selectedMonitoring) {
+      console.log("please fill all the fields");
+      return;
+    }
+  
+    console.log("All fields are filled. Proceeding...");
     this.config = {
       id_config: 0,
-      name: 'MyConfig', // Tu peux ajouter un champ input pour le nom
+      name: 'MyConfig',
       databaseType: this.selectedDatabase,
       middleware: this.selectedMiddleware,
       deployment: this.selectedDeployment,
@@ -47,5 +82,5 @@ export class HomeComponent implements OnInit{
       console.error('Error saving configuration', error);
     });
   }
-
+  
 }
