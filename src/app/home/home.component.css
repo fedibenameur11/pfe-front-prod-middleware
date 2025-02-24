@@ -11,7 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    width: 40%; /* Largeur de 50%, ajuste selon tes besoins */
+    width: 45%; /* Largeur de 50%, ajuste selon tes besoins */
     margin: 0 auto; /* Centre horizontalement */
     text-align: center;
     justify-content: center; /* Centre les éléments à l'intérieur */
@@ -228,4 +228,9 @@ select:focus {
     color: white; /* Texte en blanc */
     font-size: 16px;
     font-weight: bold;
+}
+
+
+.btn-primary {
+  background-color: rgb(99, 99, 99); /*blueviolet*/
 }

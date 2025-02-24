@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from '../Services/keycloak/keycloak.service';
-import { ConfigurationService } from '../Services/configuration.service';
+import { ConfigurationService } from '../Services/configuration/configuration.service';
 import { AuthenticationType, Configuration, DatabaseType, DeploymentType, MiddlewareType, MonitoringType } from '../Models/configuration';
+import { DeployService } from '../Services/deploy/deploy.service';
 
 @Component({
   selector: 'app-home',
@@ -25,15 +26,7 @@ export class HomeComponent implements OnInit {
   middlewareTypes = Object.keys(MiddlewareType).filter(key => isNaN(Number(key)));
   authenticationTypes = Object.keys(AuthenticationType).filter(key => isNaN(Number(key)));
 
-
-
-  databaseEnum = DatabaseType;
-  middlewareEnum = MiddlewareType;
-  deploymentEnum = DeploymentType;
-  authenticationEnum = AuthenticationType;
-  monitoringEnum = MonitoringType;
-
-  constructor(private keycloakService: KeycloakService, private configurationService: ConfigurationService) { }
+  constructor(private keycloakService: KeycloakService, private configurationService: ConfigurationService,private deployService: DeployService) { }
 
   async ngOnInit(): Promise<void> {
     console.log("Database Types:", this.databaseTypes);
@@ -81,6 +74,18 @@ export class HomeComponent implements OnInit {
     }, error => {
       console.error('Error saving configuration', error);
     });
+  
+    console.log("Triggering deployment...");
+    this.deployService.triggerDeployment().subscribe(
+      response => {
+        console.log('Déploiement déclenché avec succès', response);
+        alert('Le déploiement a été déclenché avec succès.');
+      },
+      error => {
+        console.error('Erreur lors du déclenchement du déploiement', error);
+        alert('Erreur lors du déclenchement du déploiement');
+      }
+    );
   }
   
 }
