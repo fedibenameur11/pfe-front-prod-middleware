@@ -15,7 +15,7 @@ export class KeycloakService {
     {
       this._keycloak=new Keycloak({
         url: 'http://localhost:8081',
-        realm: 'myrealm',
+        realm: 'config-generator',
         clientId: 'angular-client'
       });
     }

@@ -6,11 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { KeycloakAngularModule } from 'keycloak-angular';
 import { HttpTokenInterceptor } from './Services/interceptor/http-token.interceptor';
 import { KeycloakService } from './Services/keycloak/keycloak.service';
 import { HomeComponent } from './home/home.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init();
 }
@@ -25,7 +25,8 @@ export function kcFactory(kcService: KeycloakService) {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    KeycloakAngularModule
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [
     {

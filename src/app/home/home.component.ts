@@ -3,6 +3,7 @@ import { KeycloakService } from '../Services/keycloak/keycloak.service';
 import { ConfigurationService } from '../Services/configuration/configuration.service';
 import { AuthenticationType, Configuration, DatabaseType, DeploymentType, MiddlewareType, MonitoringType } from '../Models/configuration';
 import { DeployService } from '../Services/deploy/deploy.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
   middlewareTypes = Object.keys(MiddlewareType).filter(key => isNaN(Number(key)));
   authenticationTypes = Object.keys(AuthenticationType).filter(key => isNaN(Number(key)));
 
-  constructor(private keycloakService: KeycloakService, private configurationService: ConfigurationService,private deployService: DeployService) { }
+  constructor(private keycloakService: KeycloakService, private configurationService: ConfigurationService,private deployService: DeployService,private toastr: ToastrService) { }
 
   async ngOnInit(): Promise<void> {
     console.log("Database Types:", this.databaseTypes);
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   confirmchoice() {
-    console.log("Selected values before check:", {
+    console.log("Valeurs sélectionnées avant vérification :", {
       database: this.selectedDatabase,
       middleware: this.selectedMiddleware,
       deployment: this.selectedDeployment,
@@ -52,11 +53,16 @@ export class HomeComponent implements OnInit {
     if (!this.selectedDatabase || !this.selectedDeployment || 
         !this.selectedAuthentication || !this.selectedMiddleware || 
         !this.selectedMonitoring) {
-      console.log("please fill all the fields");
+      console.log("Veuillez remplir tous les champs");
+      this.toastr.error('Veuillez remplir tous les champs requis.', 'Erreur', {
+        positionClass: 'toast-top-right',
+        timeOut: 5000,
+        progressBar: true
+      });
       return;
     }
   
-    console.log("All fields are filled. Proceeding...");
+    console.log("Tous les champs sont remplis. Traitement en cours...");
     this.config = {
       id_config: 0,
       name: 'MyConfig',
@@ -69,23 +75,45 @@ export class HomeComponent implements OnInit {
       project: undefined,
     };
   
-    this.configurationService.addConfiguration(this.config).subscribe(response => {
-      console.log('Configuration saved successfully', response);
-    }, error => {
-      console.error('Error saving configuration', error);
+    this.configurationService.addConfiguration(this.config).subscribe({
+      next: (response) => {
+        console.log('Configuration enregistrée avec succès', response);
+        this.toastr.success('Configuration enregistrée avec succès.', 'Succès', {
+          positionClass: 'toast-top-right',
+          timeOut: 5000,
+          progressBar: true
+        });
+      },
+      error: (error) => {
+        console.error('Erreur lors de l\'enregistrement de la configuration', error);
+        this.toastr.error('Erreur lors de l\'enregistrement de la configuration.', 'Erreur', {
+          positionClass: 'toast-top-right',
+          timeOut: 5000,
+          progressBar: true
+        });
+      }
     });
   
-    console.log("Triggering deployment...");
-    this.deployService.triggerDeployment().subscribe(
-      response => {
+    console.log("Déclenchement du déploiement...");
+    this.deployService.triggerDeployment().subscribe({
+      next: (response) => {
         console.log('Déploiement déclenché avec succès', response);
-        alert('Le déploiement a été déclenché avec succès.');
+        this.toastr.success('Le déploiement a été déclenché avec succès.', 'Succès', {
+          positionClass: 'toast-top-right',
+          timeOut: 5000,
+          progressBar: true
+        });
       },
-      error => {
+      error: (error) => {
         console.error('Erreur lors du déclenchement du déploiement', error);
-        alert('Erreur lors du déclenchement du déploiement');
+        this.toastr.error('Erreur lors du déclenchement du déploiement.', 'Erreur', {
+          positionClass: 'toast-top-right',
+          timeOut: 5000,
+          progressBar: true
+        });
       }
-    );
+    });
   }
+  
   
 }
