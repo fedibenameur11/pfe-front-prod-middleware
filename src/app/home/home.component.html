@@ -27,7 +27,7 @@
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
                             <select class="form-control" [(ngModel)]="selectedDatabase" name="database">
-                                <option value=""  selected>Choose your database type</option>
+                                <option value=""  selected disabled>Choose your database type</option>
                                 <option *ngFor="let db of databaseTypes" [value]="db">{{ db }}</option>
                             </select>
                         </div>    
@@ -39,7 +39,7 @@
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
                             <select class="form-control" [(ngModel)]="selectedDeployment" name="deployment">
-                                <option value=""  selected>Choose your deployment mode</option>
+                                <option value=""  selected disabled>Choose your deployment mode</option>
                                 <option *ngFor="let dp of deploymentTypes" [value]="dp">{{ dp }}</option>
                             </select>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
                             <select class="form-control" [(ngModel)]="selectedAuthentication" name="authentication">
-                                <option value=""  selected>Choose your authentication method</option>
+                                <option value=""  selected disabled>Choose your authentication method</option>
                                 <option *ngFor="let auth of authenticationTypes" [value]="auth">{{ auth }}</option>
                             </select>
                         </div>
@@ -62,7 +62,7 @@
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span>
                             </div>
                             <select class="form-control" [(ngModel)]="selectedMiddleware" name="middleware">
-                                <option value=""  selected>Choose your messaging middleware</option>
+                                <option value=""  selected disabled>Choose your messaging middleware</option>
                                 <option *ngFor="let mid of middlewareTypes" [value]="mid">{{mid}}</option>
                             </select>
                         </div>
@@ -73,7 +73,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="now-ui-icons ui-1_settings-gear-63"></i></span> </div>
                             <select class="form-control" [(ngModel)]="selectedMonitoring" name="monitoring">
-                                <option value=""  selected>Choose your monitoring tool</option>
+                                <option value=""  selected  disabled>Choose your monitoring tool</option>
                                 <option *ngFor="let mon of monitoringTypes" [value]="mon">{{ mon }}</option>
                             </select>
                         </div>
