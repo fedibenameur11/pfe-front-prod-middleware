@@ -3,13 +3,11 @@ import { User } from "./user";
 
 export enum AuthenticationType {
     Keycloak,
-    LDAP,
-    OAuth2
+    LDAP
 }
 
 export enum DatabaseType {
     PostgreSQL,
-    Oracle,
     MySQL,
     MongoDB,
     Cassandra
