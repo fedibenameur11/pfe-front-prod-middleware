@@ -8,7 +8,7 @@ import { Project } from 'src/app/Models/project';
 })
 export class ProjectService {
 
-  private baseUrl : string = 'http://localhost:8100/project';
+  private baseUrl : string = 'http://192.168.37.129/api/project';
 
   constructor(private http: HttpClient) { }
   findAllProjects(): Observable<Project[]>{

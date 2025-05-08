@@ -14,7 +14,7 @@ export class KeycloakService {
     if(!this._keycloak)
     {
       this._keycloak=new Keycloak({
-        url: 'http://localhost:8081',
+        url: 'http://192.168.37.129:8081',
         realm: 'config-generator',
         clientId: 'angular-client'
       });
@@ -49,7 +49,7 @@ export class KeycloakService {
     return this.keycloak.login();
   }
   logout(){
-    return this.keycloak?.logout({redirectUri: 'http://localhost:4200'})
+    return this.keycloak?.logout({redirectUri: 'http://192.168.37.129/'}) //it was 4200 before
   }
 }
  

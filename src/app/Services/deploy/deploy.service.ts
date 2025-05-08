@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class DeployService {
 
   // URL de l'API Spring Boot
-  private apiUrl = 'http://localhost:8100/deploy/trigger';
+  private apiUrl = 'http://192.168.37.129/api/deploy/trigger';
 
   constructor(private http: HttpClient) { }
 

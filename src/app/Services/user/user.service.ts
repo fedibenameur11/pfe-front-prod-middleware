@@ -8,7 +8,7 @@ import { User } from 'src/app/Models/user';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl : string = 'http://localhost:8100/user';
+  private baseUrl : string = 'http://192.168.37.129/api/user';
 
   constructor(private http: HttpClient) { }
   findAllUsers(): Observable<User[]>{
