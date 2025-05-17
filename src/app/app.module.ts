@@ -11,13 +11,15 @@ import { KeycloakService } from './Services/keycloak/keycloak.service';
 import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageComponent } from './message/message.component';
 export function kcFactory(kcService: KeycloakService) {
   return () => kcService.init();
 }
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MessageComponent
     
   ],
   imports: [
