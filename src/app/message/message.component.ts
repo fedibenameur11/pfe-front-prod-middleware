@@ -10,23 +10,17 @@ export class MessageComponent {
   message: string = '';
   response: string = '';
 
-  constructor(
-    private messageService: MessageService
-    ) {}
+  constructor(private messageService: MessageService) {}
 
-  async send() {
-    try {
-      this.messageService.sendMessage(this.message).subscribe({
-        next: (res) => {
-          this.response = res;
-          this.message = '';
-        },
-        error: (err) => {
-          this.response = 'Error: ' + err.message;
-        }
-      });
-    } catch (error) {
-      this.response = 'Failed to get token';
-    }
+  send() {
+    this.messageService.sendMessage(this.message).subscribe({
+      next: (res) => {
+        this.response = res.message; // Access the 'message' property from the JSON response
+        this.message = '';
+      },
+      error: (err) => {
+        this.response = 'Error: ' + err.message;
+      }
+    });
   }
 }

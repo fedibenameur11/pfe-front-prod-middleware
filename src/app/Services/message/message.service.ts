@@ -11,7 +11,7 @@ export class MessageService {
   constructor(private http: HttpClient) {}
 
   sendMessage(message: string): Observable<any> {
-    return this.http.post(this.apiUrl, { message });
+    return this.http.post(this.apiUrl, message, { headers: { 'Content-Type': 'application/json' } });
   }
 
 }
