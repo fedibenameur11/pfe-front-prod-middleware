@@ -94,25 +94,6 @@ export class HomeComponent implements OnInit {
       }
     });
   
-    console.log("Déclenchement du déploiement...");
-    this.deployService.triggerDeployment().subscribe({
-      next: (response) => {
-        console.log('Déploiement déclenché avec succès', response);
-        this.toastr.success('Le déploiement a été déclenché avec succès.', 'Succès', {
-          positionClass: 'toast-top-right',
-          timeOut: 5000,
-          progressBar: true
-        });
-      },
-      error: (error) => {
-        console.error('Erreur lors du déclenchement du déploiement', error);
-        this.toastr.error('Erreur lors du déclenchement du déploiement.', 'Erreur', {
-          positionClass: 'toast-top-right',
-          timeOut: 5000,
-          progressBar: true
-        });
-      }
-    });
   }
   
   
