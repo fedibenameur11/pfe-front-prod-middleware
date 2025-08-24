@@ -16,7 +16,7 @@ export enum DatabaseType {
 export enum DeploymentType {
     Docker_Compose,
     Kubernetes,
-    AWS,
+    GCP,
     Azure,
     On_Premises
 }
